@@ -14,5 +14,5 @@ func main() {
 	}
 	database.StartDB()
 	r := routers.StartRouter()
-	r.Run(":8000")
+	r.Run()
 }
