@@ -8,7 +8,7 @@ type Photo struct {
 	Caption   string `json:"caption" gorm:"not null;"`
 	Photo_url string `json:"photo_url" gorm:"not null;" valid:"required~Your photo is required"`
 	UserID    uint   `json:"user_id" gorm:"not null;"`
-	User      User   `gorm:"foreignKey:UserID;" json:"User"`
+	User      User   `gorm:"foreignKey:UserID;constraint:OnUpdate:CASCADE,OnDelete:SET NULL;" json:"User"`
 }
 
 func (p *Photo) BeforeCreate() (err error) {
