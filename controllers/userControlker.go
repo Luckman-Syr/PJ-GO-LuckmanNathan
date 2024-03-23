@@ -135,16 +135,15 @@ func UserUpdate(c *gin.Context) {
 func UserDelete(c *gin.Context) {
 	db := database.GetDB()
 	userData := c.MustGet("userData").(jwt.MapClaims)
-	id := c.Param("userId")
 	_, _ = db, userData
 	user := models.User{}
 
-	err := db.Debug().Where("id = ?", id).First(&user).Error
+	err := db.Where("id = ? ", userData["id"]).First(&user).Error
 
-	if user.ID != userData["id"] {
-		helpers.Unauthorized(c, "You are not authorized to delete this user")
-		return
-	}
+	// if user.ID != userData["id"] {
+	// 	helpers.Unauthorized(c, "You are not authorized to delete this user")
+	// 	return
+	// }
 
 	if err != nil {
 		helpers.NotFound(c, "User not found")
