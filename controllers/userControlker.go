@@ -95,6 +95,7 @@ func UserUpdate(c *gin.Context) {
 		helpers.Unauthorized(c, "You are not authorized to update this user")
 		return
 	}
+	// gasd
 
 	if err != nil {
 		helpers.NotFound(c, "User not found")
