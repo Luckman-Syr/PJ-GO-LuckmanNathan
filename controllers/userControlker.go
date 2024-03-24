@@ -96,7 +96,7 @@ func UserUpdate(c *gin.Context) {
 		return
 	}
 	// gasd
-
+	// if user.ID != userData["id"] {
 	if err != nil {
 		helpers.NotFound(c, "User not found")
 		return
